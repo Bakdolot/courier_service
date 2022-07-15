@@ -1,12 +1,24 @@
+from django.core.files.base import ContentFile
+from django.db.models import Q
 from django.forms import ValidationError
 from rest_framework import serializers
 from django.utils.translation import gettext_lazy as _
 from django.db import transaction
+import base64
 
+from xlwt.compat import basestring
+
+from account.models import User
 from account.serailizers import DistrictsSerializer, VillagesSerializer
 from account.validators import PhoneValidator
 from operation.services import get_parcel_code, CalculateParcelPrice
-from operation.choices import DirectionChoices, PayStatusChoices, UserInfoChoices
+from operation.choices import (
+    DirectionChoices,
+    PayStatusChoices,
+    PaymentHistoryType,
+    UserInfoChoices,
+    PaymentTypeChoices,
+)
 from operation.models import (
     DeliveryStatus,
     ParcelOption,
@@ -17,68 +29,80 @@ from operation.models import (
     PaymentDimension,
     Envelop,
     ParcelPayment,
+    PaymentHistory,
     PaymentType,
     Payment,
     Direction,
     UserInfo,
     ParcelDimension,
-    User
+    Images,
+    ParcelBonus,
 )
 
 
-class UserBonusSerializer(serializers.ModelSerializer):
+class Base64ImageField(serializers.ImageField):
+    def from_native(self, data):
+        if isinstance(data, basestring) and data.startswith('data:image'):
+            # base64 encoded image - decode
+            format, imgstr = data.split(';base64,')  # format ~= data:image/X,
+            ext = format.split('/')[-1]  # guess file extension
+
+            data = ContentFile(base64.b64decode(imgstr), name='temp.' + ext)
+
+        return super(Base64ImageField, self).from_native(data)
+
+class PaymentHistorySerializer(serializers.ModelSerializer):
     class Meta:
-        model = User
-        fields = ('points',)
-
-
-class GetUserBonusSerializer(serializers.ModelSerializer):
-    sender = UserBonusSerializer()
-
-    class Meta:
-        model = Parcel
-        fields = ('sender',)
+        model = PaymentHistory
+        fields = "__all__"
+        depth = 1
 
 
 class DeliveryStatusSerializer(serializers.ModelSerializer):
     class Meta:
         model = DeliveryStatus
-        fields = '__all__'
+        fields = "__all__"
 
 
 class ParcelOptionSerializer(serializers.ModelSerializer):
     class Meta:
         model = ParcelOption
-        fields = '__all__'
+        fields = "__all__"
 
 
 class DistanceSerializer(serializers.ModelSerializer):
-    from_region = serializers.SlugRelatedField('name', read_only=True)
-    to_district = serializers.SlugRelatedField('name', read_only=True)
+    from_district = serializers.SlugRelatedField("name", read_only=True)
+    to_district = serializers.SlugRelatedField("name", read_only=True)
 
     class Meta:
         model = Distance
-        fields = '__all__'
+        fields = "__all__"
 
 
 class DeliveryTypeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = DeliveryType
+        exclude = ("distance",)
+
+
+class ReDeliveryTypeSerializer(serializers.ModelSerializer):
     distance = DistanceSerializer()
 
     class Meta:
         model = DeliveryType
-        fields = '__all__'
+        fields = "__all__"
 
 
 class PackagingSerializer(serializers.ModelSerializer):
     class Meta:
         model = Packaging
-        fields = '__all__'
+        fields = "__all__"
 
 
 class PaymentDimensionSerializer(serializers.ModelSerializer):
     class Meta:
         model = PaymentDimension
-        fields = '__all__'
+        fields = "__all__"
 
 
 class EnvelopSerializer(serializers.ModelSerializer):
@@ -86,13 +110,13 @@ class EnvelopSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Envelop
-        fields = '__all__'
+        exclude = ("distance",)
 
 
 class PaymentTypeSerializer(serializers.ModelSerializer):
     class Meta:
         model = PaymentType
-        fields = '__all__'
+        fields = "__all__"
 
 
 class PaymentSerializer(serializers.ModelSerializer):
@@ -100,34 +124,36 @@ class PaymentSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Payment
-        fields = '__all__'
+        fields = "__all__"
 
 
 class ParcelPaymentSerializer(serializers.ModelSerializer):
-    payment = PaymentSerializer(many=True)
     parcel = serializers.PrimaryKeyRelatedField(read_only=True)
     price = serializers.DecimalField(9, 2, read_only=True)
     pay_status = serializers.SerializerMethodField(read_only=True)
 
     class Meta:
         model = ParcelPayment
-        fields = '__all__'
-    
+        fields = "__all__"
+
     def get_pay_status(self, instance):
-        type = PayStatusChoices.IN_ANTICIPATION if instance.pay_status == 'in_anticipation' \
+        type = (
+            PayStatusChoices.IN_ANTICIPATION
+            if instance.pay_status == "in_anticipation"
             else PayStatusChoices.PAID
+        )
         return type.label
-    
+
 
 class ParcelPaymentRetrieveSerializer(serializers.ModelSerializer):
     payment = PaymentSerializer(many=True)
-    delivery_type = DeliveryTypeSerializer()
+    delivery_type = ReDeliveryTypeSerializer()
     packaging = PackagingSerializer(many=True)
     envelop = EnvelopSerializer()
-    
+
     class Meta:
         model = ParcelPayment
-        fields = '__all__'
+        fields = "__all__"
 
 
 class DirectionSerializer(serializers.ModelSerializer):
@@ -135,14 +161,14 @@ class DirectionSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Direction
-        fields = '__all__'
+        fields = "__all__"
 
 
 class DirectionRetrieveSerializer(DirectionSerializer):
     district = DistrictsSerializer()
     village = VillagesSerializer()
     type = serializers.SerializerMethodField()
-    
+
     def get_type(self, instance):
         type = DirectionChoices.FROM if instance.type == 1 else DirectionChoices.TO
         return type.label
@@ -154,7 +180,7 @@ class UserInfoSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = UserInfo
-        fields = '__all__'
+        fields = "__all__"
 
 
 class ParcelDimensionSerializer(serializers.ModelSerializer):
@@ -162,19 +188,80 @@ class ParcelDimensionSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = ParcelDimension
-        fields = '__all__'
-        
+        fields = "__all__"
+
 
 class ReatriveParcelSerializer(serializers.ModelSerializer):
     payment = ParcelPaymentRetrieveSerializer()
     direction = DirectionRetrieveSerializer(many=True)
     user_info = UserInfoSerializer(many=True)
     dimension = ParcelDimensionSerializer()
-    option = serializers.SlugRelatedField('title', read_only=True, many=True)
-    
+    option = serializers.SlugRelatedField("title", read_only=True, many=True)
+    bonus = serializers.SerializerMethodField()
+
     class Meta:
         model = Parcel
-        fields = '__all__'
+        fields = ('id','payment', 'direction','user_info','dimension','option','bonus', 'title', 'code', 'create_at','sending_date','status','courier')
+
+    def get_bonus(self, obj):
+        bonus = ParcelBonus.objects.filter(parcel=obj).first()
+        if bonus:
+            return bonus.bonus
+        else:
+            return None
+
+
+class BonusHistorySerializer(serializers.ModelSerializer):
+    sending_date = serializers.SerializerMethodField()
+    code = serializers.SerializerMethodField()
+    icon = serializers.SerializerMethodField()
+    parcel_sum = serializers.SerializerMethodField()
+
+    class Meta:
+        model = PaymentHistory
+        fields = "__all__"
+
+    def get_code(self, instance):
+        try:
+            return instance.parcel.code
+        except:
+            return None
+
+    def get_icon(self, instance):
+        try:
+            request = self.context.get("request")
+            image = instance.parcel.payment.delivery_type.icon.url
+            url = request.build_absolute_uri(image)
+            return url
+        except:
+            return None
+
+    def get_parcel_sum(self, instance):
+        try:
+            return instance.parcel.payment.price
+        except:
+            return None
+
+    def get_sending_date(self, instance):
+        try:
+            return instance.parcel.sending_date
+        except:
+            return None
+
+
+class ImageSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Images
+        fields = "__all__"
+
+    @transaction.atomic
+    def create(self, validated_data):
+        images = self.context['images']
+        parcel = validated_data.pop("parcel")
+        for image in images:
+            img = Images.objects.create(parcel=parcel, img=image)
+        return img
 
 
 class CreateParcelSerializer(serializers.ModelSerializer):
@@ -183,48 +270,45 @@ class CreateParcelSerializer(serializers.ModelSerializer):
     user_info = UserInfoSerializer(many=True)
     dimension = ParcelDimensionSerializer(required=False)
     code = serializers.CharField(read_only=True)
-    
+
     class Meta:
         model = Parcel
-        exclude = ('sender', 'create_at')
+        exclude = ("sender", "create_at")
 
     def validate_direction(self, direction):
         if len(direction) != 2:
-            raise ValidationError({'message': _('direction must be 2')})
-        if direction[0].get('type') != 1:
-            raise ValidationError({'message': 'wrong type'})
-        if direction[1].get('type') != 2:
-            raise ValidationError({'message': 'wrong type'})
+            raise ValidationError({"message": _("direction must be 2")})
+        if direction[0].get("type") != 1:
+            raise ValidationError({"message": "wrong type"})
+        if direction[1].get("type") != 2:
+            raise ValidationError({"message": "wrong type"})
         return direction
 
     def validate_user_info(self, user_info):
         if len(user_info) != 2:
-            raise ValidationError({'message': _('user_info must be 2')})
-        if user_info[0].get('type') != 1:
-            raise ValidationError({'message': 'wrong type'})
-        if user_info[1].get('type') != 2:
-            raise ValidationError({'message': 'wrong type'})
+            raise ValidationError({"message": _("user_info must be 2")})
+        if user_info[0].get("type") != 1:
+            raise ValidationError({"message": "wrong type"})
+        if user_info[1].get("type") != 2:
+            raise ValidationError({"message": "wrong type"})
         return user_info
 
     @transaction.atomic
     def create(self, validated_data):
-        payment = validated_data.pop('payment')
-        direction = validated_data.pop('direction')
-        user_info = validated_data.pop('user_info')
-        dimension = validated_data.pop('dimension')
+        payment = validated_data.pop("payment")
+        direction = validated_data.pop("direction")
+        user_info = validated_data.pop("user_info")
+        dimension = validated_data.pop("dimension")
 
-        validated_data['code'] = get_parcel_code(direction[1])
-        validated_data['sender'] = self.context.get('request').user
-        options = validated_data.pop('option')
+        validated_data["code"] = get_parcel_code(direction[1])
+        validated_data["sender"] = self.context.get("request").user
+        options = validated_data.pop("option")
         parcel = Parcel.objects.create(**validated_data)
         parcel.option.set(options)
 
-        parcel_payments = payment.pop('payment')
-        packaging = payment.pop('packaging')
+        packaging = payment.pop("packaging")
         payment = ParcelPayment.objects.create(parcel=parcel, **payment)
         payment.packaging.set(packaging)
-        for parcel_pay in parcel_payments:
-            Payment.objects.create(parcel=payment, **parcel_pay)
 
         for dir in direction:
             Direction.objects.create(parcel=parcel, **dir)
@@ -235,6 +319,19 @@ class CreateParcelSerializer(serializers.ModelSerializer):
         if dimension:
             dimension = ParcelDimension.objects.create(parcel=parcel, **dimension)
 
-        parcel.payment.price = CalculateParcelPrice(parcel).price
-        parcel.save()
+        payment.price = CalculateParcelPrice(parcel).price
+        payment.save()
+
+        Payment.objects.create(
+            parcel=payment,
+            type=PaymentType.objects.get(type=PaymentTypeChoices.CASH),
+            sum=payment.price,
+        )
+
+        ParcelBonus.objects.create(
+            parcel=parcel,
+            bonus=(float(payment.price)*0.05)
+        )
+
         return parcel
+

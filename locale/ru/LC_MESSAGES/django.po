@@ -1,0 +1,983 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-03-24 11:49+0600\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
+"%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: about/models.py:12
+msgid "company name"
+msgstr "название компании"
+
+#: about/models.py:13
+msgid "logo"
+msgstr "лого"
+
+#: about/models.py:19
+msgid "Partner"
+msgstr "Партнер"
+
+#: about/models.py:20
+msgid "Partners"
+msgstr "Партнеры"
+
+#: about/models.py:24
+msgid "social"
+msgstr "социальная сеть"
+
+#: about/models.py:25
+msgid "social icon"
+msgstr "иконка социальной сети"
+
+#: about/models.py:31
+msgid "Contact"
+msgstr "Контактны"
+
+#: about/models.py:32
+msgid "Contacts"
+msgstr "Контакты"
+
+#: about/models.py:36 account/models.py:64 account/models.py:80
+#: account/models.py:96 operation/models.py:307
+msgid "name"
+msgstr "название"
+
+#: about/models.py:42
+msgid "Article category"
+msgstr "Категория новости"
+
+#: about/models.py:43
+msgid "Article categories"
+msgstr "Категории новостей"
+
+#: about/models.py:47 about/models.py:102 operation/models.py:17
+#: operation/models.py:39 operation/models.py:82 operation/models.py:98
+#: operation/models.py:127 operation/models.py:181
+msgid "title"
+msgstr "название"
+
+#: about/models.py:49
+msgid "border image"
+msgstr "фото"
+
+#: about/models.py:51
+msgid "article category"
+msgstr "категория"
+
+#: about/models.py:53
+msgid "watched count"
+msgstr "колво просмотров"
+
+#: about/models.py:54 operation/models.py:297
+msgid "created date"
+msgstr "дата создания"
+
+#: about/models.py:60
+msgid "New"
+msgstr "Новость"
+
+#: about/models.py:61
+msgid "News"
+msgstr "Новости"
+
+#: about/models.py:65 operation/models.py:87
+msgid "image"
+msgstr "фото"
+
+#: about/models.py:69
+msgid "New gallery"
+msgstr "галерия"
+
+#: about/models.py:70
+msgid "New galleries"
+msgstr "галерия"
+
+#: about/models.py:76 account/models.py:65 account/models.py:81
+#: account/models.py:97 operation/models.py:230
+msgid "geolocation"
+msgstr "геолокация"
+
+#: about/models.py:77
+msgid "contact phone"
+msgstr "контактный номер"
+
+#: about/models.py:78 operation/models.py:251
+msgid "email"
+msgstr "email"
+
+#: about/models.py:84
+msgid "Fillial"
+msgstr "Филлиал"
+
+#: about/models.py:85
+msgid "Fillials"
+msgstr "Филлиалы"
+
+#: about/models.py:89
+msgid "alias"
+msgstr "псевдоним"
+
+#: about/models.py:90
+msgid "value"
+msgstr "значение"
+
+#: about/models.py:91 operation/models.py:83 operation/models.py:99
+#: operation/models.py:128 operation/models.py:216
+msgid "description"
+msgstr "описание"
+
+#: about/models.py:97
+msgid "Option"
+msgstr "Опция"
+
+#: about/models.py:98
+msgid "Options"
+msgstr "Опции"
+
+#: about/models.py:103 about/models.py:117
+msgid "text"
+msgstr "текст"
+
+#: about/models.py:109
+msgid "Question"
+msgstr "Вопрос"
+
+#: about/models.py:110
+msgid "Questions"
+msgstr "Вопросы"
+
+#: about/models.py:115
+msgid "question"
+msgstr "вопрос"
+
+#: about/models.py:120
+msgid "Answer"
+msgstr "Ответ"
+
+#: about/models.py:121
+msgid "Answers"
+msgstr "Ответы"
+
+#: account/choices.py:6
+msgid "register"
+msgstr "регистрация"
+
+#: account/choices.py:7
+msgid "reset password"
+msgstr "сброс пароля"
+
+#: account/choices.py:8
+msgid "reset phone"
+msgstr "сброс тел. номера"
+
+#: account/choices.py:12
+msgid "client"
+msgstr "клиент"
+
+#: account/choices.py:13
+msgid "courier"
+msgstr "курьер"
+
+#: account/choices.py:14
+msgid "operator"
+msgstr "оператор"
+
+#: account/choices.py:15
+msgid "subadmin"
+msgstr "субадмин"
+
+#: account/messages.py:6
+msgid "User is activated"
+msgstr "Пользователь активирован"
+
+#: account/messages.py:7
+msgid "Password successfully changed"
+msgstr "Пароль успешно изменен"
+
+#: account/messages.py:8
+msgid "Phone successfully changed"
+msgstr "Тел. номер успешно изменен"
+
+#: account/messages.py:9
+msgid "The code was successfully sent"
+msgstr "Код отправлен"
+
+#: account/messages.py:13
+msgid "A user with that phone number does not exists."
+msgstr "Пользователь с таким номером не существует"
+
+#: account/messages.py:14
+msgid "Wrong otp code"
+msgstr "Не правельный код"
+
+#: account/messages.py:15
+msgid "provide a strong password!"
+msgstr "Введите надежный пароль"
+
+#: account/models.py:17
+msgid "user phone number"
+msgstr "Тел. номер"
+
+#: account/models.py:20
+msgid "Required. 9 digits in format: 996*********** without \"+\"."
+msgstr "Требуется. 9 цифр в формате: 996*********** без \"+\"."
+
+#: account/models.py:23
+msgid "A user with that phone number already exists."
+msgstr "Пользователь с таким номером уже существует"
+
+#: account/models.py:26 operation/models.py:249
+msgid "user info"
+msgstr "Информация о пользователе"
+
+#: account/models.py:28 account/models.py:78 account/models.py:94
+msgid "region"
+msgstr "регион"
+
+#: account/models.py:31 operation/models.py:224
+msgid "district"
+msgstr "район"
+
+#: account/models.py:34
+msgid "role"
+msgstr "роль"
+
+#: account/models.py:36
+msgid "user bonus points"
+msgstr "бонусные баллы"
+
+#: account/models.py:37
+msgid "avatar"
+msgstr "аватар"
+
+#: account/models.py:39
+msgid "active"
+msgstr "активирован"
+
+#: account/models.py:42
+msgid "Designates whether this user should be treated as active. Unselect this instead of deleting accounts."
+msgstr ""
+
+#: account/models.py:66 account/models.py:82 account/models.py:98
+#: operation/models.py:49
+msgid "code"
+msgstr "код"
+
+#: account/models.py:72
+msgid "Region"
+msgstr "Регион"
+
+#: account/models.py:73
+msgid "Regions"
+msgstr "Регионы"
+
+#: account/models.py:88
+msgid "District"
+msgstr "Район"
+
+#: account/models.py:89
+msgid "Districts"
+msgstr "Районы"
+
+#: account/models.py:104
+msgid "Village"
+msgstr "Село"
+
+#: account/models.py:105
+msgid "Villages"
+msgstr "Селы"
+
+#: account/validators.py:9
+msgid "Phone number must be entered in the format: +996*********** Up to 9 digits allowed."
+msgstr "Номер телефона должен быть введен в формате: +996*********** Допускается до 9 цифр"
+
+#: account/validators.py:15
+msgid "Code must be 2 digit"
+msgstr "код должен состоять из 2 цифр"
+
+#: operation/admin.py:75 operation/models.py:64
+msgid "from region"
+msgstr "от региона"
+
+#: operation/admin.py:80 operation/models.py:67
+msgid "to district"
+msgstr "в район"
+
+#: operation/choices.py:6
+msgid "from"
+msgstr "от"
+
+#: operation/choices.py:7
+msgid "to"
+msgstr "в"
+
+#: operation/choices.py:11 operation/models.py:41
+msgid "sender"
+msgstr "отправитель"
+
+#: operation/choices.py:12
+msgid "recipient"
+msgstr "получатель"
+
+#: operation/choices.py:16
+msgid "in anticipation"
+msgstr "в ожидании"
+
+#: operation/choices.py:17
+msgid "paid"
+msgstr "оплаченио"
+
+#: operation/choices.py:21
+msgid "cash"
+msgstr "наличные"
+
+#: operation/choices.py:22
+msgid "bonus"
+msgstr "бонус"
+
+#: operation/choices.py:23
+msgid "Mbank"
+msgstr "Мбанк"
+
+#: operation/choices.py:24
+msgid "Megapay"
+msgstr "Мегапей"
+
+#: operation/choices.py:25
+msgid "balance"
+msgstr "Баланс"
+
+#: operation/choices.py:26
+msgid "O_pay"
+msgstr "О деньги"
+
+#: operation/choices.py:27
+msgid "Elsom"
+msgstr "Элсом"
+
+#: operation/choices.py:31
+msgid "credit"
+msgstr "Кредит"
+
+#: operation/choices.py:32
+msgid "debit"
+msgstr "Дебит"
+
+#: operation/models.py:23
+msgid "Delivery status"
+msgstr "Статус отправки"
+
+#: operation/models.py:24
+msgid "Delivery statuses"
+msgstr "Статусы отправки"
+
+#: operation/models.py:28
+msgid "option title"
+msgstr "название"
+
+#: operation/models.py:34
+msgid "Parcel option"
+msgstr "Опция пасылки"
+
+#: operation/models.py:35
+msgid "Parcel options"
+msgstr "Опции посылок"
+
+#: operation/models.py:46
+msgid "delivery status"
+msgstr "статус отправки"
+
+#: operation/models.py:50
+msgid "date creation"
+msgstr "дата создания"
+
+#: operation/models.py:51
+msgid "options"
+msgstr "опции"
+
+#: operation/models.py:52
+msgid "sendin date"
+msgstr "дата отправки"
+
+#: operation/models.py:58
+msgid "Parcel"
+msgstr "Посылка"
+
+#: operation/models.py:59
+msgid "Parcels"
+msgstr "Посылки"
+
+#: operation/models.py:74
+msgid "Distance"
+msgstr "Дистанция"
+
+#: operation/models.py:75
+msgid "Distances"
+msgstr "Дистанции"
+
+#: operation/models.py:80 operation/models.py:125
+msgid "distance"
+msgstr "дистанция"
+
+#: operation/models.py:84 operation/models.py:100 operation/models.py:117
+#: operation/models.py:126 operation/models.py:148
+msgid "price"
+msgstr "цена"
+
+#: operation/models.py:85
+msgid "time in hour"
+msgstr "время в часах"
+
+#: operation/models.py:86 operation/models.py:180
+msgid "icon"
+msgstr "иконка"
+
+#: operation/models.py:93
+msgid "Delivery type"
+msgstr "Тип отправки"
+
+#: operation/models.py:94
+msgid "Delivery types"
+msgstr "Типы отправок"
+
+#: operation/models.py:101
+msgid "quantity"
+msgstr "количество"
+
+#: operation/models.py:102
+msgid "measuring unit"
+msgstr "единица измерения"
+
+#: operation/models.py:108
+msgid "Packaging"
+msgstr "Упаковка"
+
+#: operation/models.py:109
+msgid "Packagings"
+msgstr "Упаковки"
+
+#: operation/models.py:113 operation/models.py:272
+msgid "parcel length"
+msgstr "длина"
+
+#: operation/models.py:114 operation/models.py:273
+msgid "parcel width"
+msgstr "ширина"
+
+#: operation/models.py:115 operation/models.py:274
+msgid "parcel height"
+msgstr "высота"
+
+#: operation/models.py:116 operation/models.py:275
+msgid "parcel weight"
+msgstr "вес"
+
+#: operation/models.py:120
+msgid "Payment dimension"
+msgstr "Размер посылки"
+
+#: operation/models.py:121
+msgid "Payment dimensions"
+msgstr "Размеры посылок"
+
+#: operation/models.py:129
+msgid "dimension"
+msgstr "размер"
+
+#: operation/models.py:130
+msgid "price per kilo"
+msgstr "цена за килограмм"
+
+#: operation/models.py:136
+msgid "Envelop"
+msgstr "Конверт"
+
+#: operation/models.py:137
+msgid "Envelops"
+msgstr "Конверты"
+
+#: operation/models.py:144 operation/models.py:220 operation/models.py:245
+#: operation/models.py:269 operation/models.py:288
+msgid "parcel"
+msgstr "посылка"
+
+#: operation/models.py:154
+msgid "delivery type"
+msgstr "тип отправки"
+
+#: operation/models.py:156
+msgid "parcel packaging"
+msgstr "упаковка"
+
+#: operation/models.py:158
+msgid "status"
+msgstr "статус"
+
+#: operation/models.py:166
+msgid "envelop"
+msgstr "конверт"
+
+#: operation/models.py:175
+msgid "Parcel payment"
+msgstr "Оплата посылки"
+
+#: operation/models.py:176
+msgid "Parcel payments"
+msgstr "Оплаты посылок"
+
+#: operation/models.py:183 operation/models.py:202 operation/models.py:215
+#: operation/models.py:291
+msgid "type"
+msgstr "тип"
+
+#: operation/models.py:190
+msgid "Payment type"
+msgstr "Тип оплаты"
+
+#: operation/models.py:191
+msgid "Payment types"
+msgstr "Типы оплат"
+
+#: operation/models.py:198
+msgid "parcel payment"
+msgstr "оплата посылки"
+
+#: operation/models.py:204 operation/models.py:293
+msgid "sum"
+msgstr "сумма"
+
+#: operation/models.py:210
+msgid "Payment"
+msgstr "Оплата"
+
+#: operation/models.py:211
+msgid "Payments"
+msgstr "Оплаты"
+
+#: operation/models.py:227
+msgid "village"
+msgstr "село"
+
+#: operation/models.py:229
+msgid "destination"
+msgstr "направление"
+
+#: operation/models.py:237
+msgid "Direction"
+msgstr "Направления"
+
+#: operation/models.py:238
+msgid "Directions"
+msgstr "Направлении"
+
+#: operation/models.py:248
+msgid "phone"
+msgstr "телефонный номер"
+
+#: operation/models.py:250
+msgid "company"
+msgstr "компания"
+
+#: operation/models.py:253
+msgid "user info type"
+msgstr "тип"
+
+#: operation/models.py:261 operation/models.py:262
+msgid "User info"
+msgstr "Информация о пользователе"
+
+#: operation/models.py:281
+msgid "Parcel dimension"
+msgstr "Размер посылки"
+
+#: operation/models.py:282
+msgid "Parcel dimensions"
+msgstr "Размеры посылок"
+
+#: operation/models.py:286
+msgid "user"
+msgstr "пользователе"
+
+#: operation/models.py:295
+msgid "payment type"
+msgstr "тип оплаты"
+
+#: operation/models.py:303
+msgid "Payment history"
+msgstr "История оплат"
+
+#: operation/models.py:304
+msgid "Payment histories"
+msgstr "Истории оплат"
+
+#: operation/models.py:310
+msgid "Town"
+msgstr ""
+
+#: operation/models.py:311
+msgid "Towns"
+msgstr ""
+
+#: operation/serializers.py:231
+msgid "direction must be 2"
+msgstr "направлений должно быть 2"
+
+#: operation/serializers.py:240
+msgid "user_info must be 2"
+msgstr "информация пользователей должно быть 2"
+
+#, fuzzy
+msgid "to district"
+msgstr "в район"
+
+msgid "From district"
+msgstr "в район"
+
+#, fuzzy
+msgid "Options"
+msgstr "Параметры"
+
+msgid "Operations"
+msgstr "Опции"
+
+msgid "Invalid basic header. No credentials provided."
+msgstr "Недопустимый заголовок. Не предоставлены учетные данные."
+
+msgid "Invalid basic header. Credentials string should not contain spaces."
+msgstr "Недопустимый заголовок. Учетные данные не должны содержать пробелов."
+
+msgid "Invalid basic header. Credentials not correctly base64 encoded."
+msgstr "Недопустимый заголовок. Учетные данные некорректно закодированны в base64."
+
+msgid "Invalid username/password."
+msgstr "Недопустимые имя пользователя или пароль."
+
+msgid "User inactive or deleted."
+msgstr "Пользователь неактивен или удален."
+
+msgid "Invalid token header. No credentials provided."
+msgstr "Недопустимый заголовок токена. Не предоставлены учетные данные."
+
+msgid "Invalid token header. Token string should not contain spaces."
+msgstr "Недопустимый заголовок токена. Токен не должен содержать пробелов."
+
+msgid "Invalid token header. Token string should not contain invalid characters."
+msgstr "Недопустимый заголовок токена. Токен не должен содержать недопустимые символы."
+
+msgid "Invalid token."
+msgstr "Недопустимый токен."
+
+msgid "Auth Token"
+msgstr "Токен аутентификации"
+
+msgid "Key"
+msgstr "Ключ"
+
+msgid "User"
+msgstr "Пользователь"
+
+msgid "Created"
+msgstr "Создан"
+
+msgid "Token"
+msgstr "Токен"
+
+msgid "Tokens"
+msgstr "Токены"
+
+msgid "Username"
+msgstr "Имя пользователя"
+
+msgid "Password"
+msgstr "Пароль"
+
+msgid "Unable to log in with provided credentials."
+msgstr "Невозможно войти с предоставленными учетными данными."
+
+msgid "Must include \"username\" and \"password\"."
+msgstr "Должен включать \"username\" и \"password\"."
+
+msgid "A server error occurred."
+msgstr "Произошла ошибка сервера."
+
+msgid "Malformed request."
+msgstr "Искаженный запрос."
+
+msgid "Incorrect authentication credentials."
+msgstr "Некорректные учетные данные."
+
+msgid "Authentication credentials were not provided."
+msgstr "Учетные данные не были предоставлены."
+
+msgid "You do not have permission to perform this action."
+msgstr "У вас нет прав для выполнения этой операции."
+
+msgid "Method \"{method}\" not allowed."
+msgstr "Метод \"{method}\" не разрешен."
+
+msgid "Unsupported media type \"{media_type}\" in request."
+msgstr "Неподдерживаемый тип данных \"{media_type}\" в запросе."
+
+msgid "Request was throttled."
+msgstr "Запрос был проигнорирован."
+
+msgid "This field is required."
+msgstr "Это поле обязательно."
+
+msgid "This field may not be null."
+msgstr "Это поле не может быть null."
+
+msgid "This field may not be blank."
+msgstr "Это поле не может быть пустым."
+
+msgid "Ensure this field has no more than {max_length} characters."
+msgstr "Убедитесь, что в этом поле не больше {max_length} символов."
+
+msgid "Ensure this field has at least {min_length} characters."
+msgstr "Убедитесь, что в этом поле как минимум {min_length} символов."
+
+msgid "Enter a valid \"slug\" consisting of letters, numbers, underscores or hyphens."
+msgstr "Введите корректный \"slug\", состоящий из букв, цифр, знаков подчеркивания или дефисов."
+
+msgid "Enter a valid URL."
+msgstr "Введите корректный URL."
+
+msgid "Enter a valid IPv4 or IPv6 address."
+msgstr "Введите действительный адрес IPv4 или IPv6."
+
+msgid "A valid integer is required."
+msgstr "Требуется целочисленное значение."
+
+msgid "Ensure this value is less than or equal to {max_value}."
+msgstr "Убедитесь, что значение меньше или равно {max_value}."
+
+msgid "Ensure this value is greater than or equal to {min_value}."
+msgstr "Убедитесь, что значение больше или равно {min_value}."
+
+msgid "String value too large."
+msgstr "Слишком длинное значение."
+
+msgid "A valid number is required."
+msgstr "Требуется численное значение."
+
+msgid "Ensure that there are no more than {max_digits} digits in total."
+msgstr "Убедитесь, что в числе не больше {max_digits} знаков."
+
+msgid "Ensure that there are no more than {max_decimal_places} decimal places."
+msgstr "Убедитесь, что в числе не больше {max_decimal_places} знаков в дробной части."
+
+msgid "Ensure that there are no more than {max_whole_digits} digits before the decimal point."
+msgstr "Убедитесь, что в числе не больше {max_whole_digits} знаков в целой части."
+
+msgid "Datetime has wrong format. Use one of these formats instead: {format}."
+msgstr "Неправильный формат datetime. Используйте один из этих форматов: {format}."
+
+msgid "Expected a datetime but got a date."
+msgstr "Ожидался datetime, но был получен date."
+
+msgid "Date has wrong format. Use one of these formats instead: {format}."
+msgstr "Неправильный формат date. Используйте один из этих форматов: {format}."
+
+msgid "Expected a date but got a datetime."
+msgstr "Ожидался date, но был получен datetime."
+
+msgid "Time has wrong format. Use one of these formats instead: {format}."
+msgstr "Неправильный формат времени. Используйте один из этих форматов: {format}."
+
+msgid "Duration has wrong format. Use one of these formats instead: {format}."
+msgstr "Неправильный формат. Используйте один из этих форматов: {format}."
+
+msgid "\"{input}\" is not a valid choice."
+msgstr "\"{input}\" не является корректным значением."
+
+msgid "More than {count} items..."
+msgstr "Элементов больше чем {count}"
+
+msgid "Expected a list of items but got type \"{input_type}\"."
+msgstr "Ожидался list со значениями, но был получен \"{input_type}\"."
+
+msgid "No file was submitted."
+msgstr "Не был загружен файл."
+
+msgid "\"{input}\" is not a valid path choice."
+msgstr "\"{input}\" не является корректным путем до файла"
+
+msgid "Ensure this filename has at most {max_length} characters (it has {length})."
+msgstr "Убедитесь, что имя файла меньше {max_length} символов (сейчас {length})."
+
+msgid "The submitted file is empty."
+msgstr "Загруженный файл пуст."
+
+msgid "No filename could be determined."
+msgstr "Невозможно определить имя файла."
+
+msgid "Upload a valid image. The file you uploaded was either not an image or a corrupted image."
+msgstr "Загрузите корректное изображение. Загруженный файл не является изображением, либо является испорченным."
+
+msgid "This list may not be empty."
+msgstr "Этот список не может быть пустым."
+
+msgid "Expected a dictionary of items but got type \"{input_type}\"."
+msgstr "Ожидался словарь со значениями, но был получен \"{input_type}\"."
+
+msgid "Value must be valid JSON."
+msgstr "Значение должно быть правильным JSON."
+
+msgid "Search"
+msgstr "Поиск"
+
+msgid "Ordering"
+msgstr "Порядок сортировки"
+
+msgid "ascending"
+msgstr "по возрастанию"
+
+msgid "descending"
+msgstr "по убыванию"
+
+msgid "Invalid page."
+msgstr "Неправильная страница"
+
+msgid "Invalid cursor"
+msgstr "Не корректный курсор"
+
+msgid "Invalid pk \"{pk_value}\" - object does not exist."
+msgstr "Недопустимый первичный ключ \"{pk_value}\" - объект не существует."
+
+msgid "Incorrect type. Expected pk value, received {data_type}."
+msgstr "Некорректный тип. Ожидалось значение первичного ключа, получен {data_type}."
+
+msgid "Invalid hyperlink - No URL match."
+msgstr "Недопустимая ссылка - нет совпадения по URL."
+
+msgid "Invalid hyperlink - Incorrect URL match."
+msgstr "Недопустимая ссылка - некорректное совпадение по URL,"
+
+msgid "Invalid hyperlink - Object does not exist."
+msgstr "Недопустимая ссылка - объект не существует."
+
+msgid "Incorrect type. Expected URL string, received {data_type}."
+msgstr "Некорректный тип. Ожидался URL, получен {data_type}."
+
+msgid "Object with {slug_name}={value} does not exist."
+msgstr "Объект с {slug_name}={value} не существует."
+
+msgid "Invalid value."
+msgstr "Недопустимое значение."
+
+msgid "Invalid data. Expected a dictionary, but got {datatype}."
+msgstr "Недопустимые данные. Ожидался dictionary, но был получен {datatype}."
+
+msgid "Filters"
+msgstr "Фильтры"
+
+msgid "None"
+msgstr "Ничего"
+
+msgid "No items to select."
+msgstr "Нет элементов для выбора"
+
+msgid "This field must be unique."
+msgstr "Это поле должно быть уникально."
+
+msgid "The fields {field_names} must make a unique set."
+msgstr "Поля {field_names} должны производить массив с уникальными значениями."
+
+msgid "This field must be unique for the \"{date_field}\" date."
+msgstr "Это поле должно быть уникально для даты \"{date_field}\"."
+
+msgid "This field must be unique for the \"{date_field}\" month."
+msgstr "Это поле должно быть уникально для месяца \"{date_field}\"."
+
+msgid "This field must be unique for the \"{date_field}\" year."
+msgstr "Это поле должно быть уникально для года \"{date_field}\"."
+
+msgid "Invalid version in \"Accept\" header."
+msgstr "Недопустимая версия в заголовке \"Accept\"."
+
+msgid "Invalid version in URL path."
+msgstr "Недопустимая версия в пути URL."
+
+msgid "Invalid version in URL path. Does not match any version namespace."
+msgstr "Недопустимая версия в пути URL. Не соответствует ни одному version namespace."
+
+msgid "Invalid version in hostname."
+msgstr "Недопустимая версия в имени хоста."
+
+msgid "Invalid version in query parameter."
+msgstr "Недопустимая версия в параметре запроса."
+
+msgid "Authorization header must contain two space-delimited values"
+msgstr "Заголовок авторизации должен содержать два значения, разделенных пробелом"
+
+msgid "Given token not valid for any token type"
+msgstr "Данный токен недействителен для любого типа токена"
+
+msgid "Token contained no recognizable user identification"
+msgstr "Токен не содержит идентификатор пользователя"
+
+msgid "User not found"
+msgstr "Пользователь не найден"
+
+msgid "User is inactive"
+msgstr "Пользователь неактивен"
+
+msgid "Unrecognized algorithm type '{}'"
+msgstr "Нераспознанный тип алгоритма '{}'"
+
+msgid "Token is invalid or expired"
+msgstr "Токен недействителен или просрочен"
+
+msgid "No active account found with the given credentials"
+msgstr "Не найдено активной учетной записи с указанными данными"
+
+msgid "The '{}' setting has been removed. Please refer to '{}' for available settings."
+msgstr "Параметр '{}' был удален. Пожалуйста, обратитесь к '{}' для просмотра доступных настроек."
+
+msgid "jti"
+msgstr "jti"
+
+msgid "created at"
+msgstr "создан"
+
+msgid "expires at"
+msgstr "истекает"
+
+msgid "Token Blacklist"
+msgstr "Token Blacklist"
+
+msgid "Cannot create token with no type or lifetime"
+msgstr "Невозможно создать токен без типа или времени жизни"
+
+msgid "Token has no id"
+msgstr "У токена нет идентификатора"
+
+msgid "Token has no type"
+msgstr "Токен не имеет типа"
+
+msgid "Token has wrong type"
+msgstr "Токен имеет неправильный тип"
+
+msgid "Token has no '{}' claim"
+msgstr "Токен не содержит '{}'"
+
+msgid "Token '{}' claim has expired"
+msgstr "Токен имеет просроченное значение '{}'"
+
+msgid "Token is blacklisted"
+msgstr "Токен занесен в черный список"

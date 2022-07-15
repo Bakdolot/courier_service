@@ -1,13 +1,7 @@
 from rest_framework import generics
 from rest_framework.response import Response
 
-from about.models import (
-    Partner,
-    Contact,
-    New,
-    Fillial,
-    Question
-)
+from about.models import Partner, Contact, New, Fillial, Question
 from about.utils import send_email
 from about.serializers import (
     PartnerSerializer,
@@ -15,7 +9,7 @@ from about.serializers import (
     NewsSerializer,
     FillialSerializer,
     QuestionSerializer,
-    FeedbackSerializer
+    FeedbackSerializer,
 )
 
 
@@ -38,6 +32,12 @@ class NewDetailView(generics.RetrieveAPIView):
     queryset = New.objects.all()
     serializer_class = NewsSerializer
 
+    def get_object(self):
+        article = super().get_object()
+        article.watched_count += 1
+        article.save()
+        return article
+
 
 class FillialView(generics.ListAPIView):
     queryset = Fillial.objects.all()
@@ -51,10 +51,9 @@ class QuestionView(generics.ListAPIView):
 
 class FeedbackView(generics.GenericAPIView):
     serializer_class = FeedbackSerializer
-    
+
     def post(self, request, *args, **kwargs):
         serializer = self.get_serializer(request.data).data
-        text = f'Email: {serializer.get("email")}\n' \
-                f'Phone: {serializer.get("phone")}'
+        text = f'Name: {serializer.get("name")}\n' f'Phone: {serializer.get("phone")}'
         send_email(text)
         return Response()
